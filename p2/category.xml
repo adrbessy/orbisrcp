@@ -4,6 +4,10 @@
 		url="https://devs.orbisgis.org/eclipse-repo">
 		DBeaver Update Site
 	</description>
+	<feature url="features/geotools_1.0.0.qualifier.jar"
+		id="geotools" version="1.0.0.qualifier">
+		<category name="org.orbisgis.rcp" />
+	</feature>
 	<feature url="features/groovyeditor_1.0.0.qualifier.jar"
 		id="groovyeditor" version="1.0.0.qualifier">
 		<category name="org.orbisgis.rcp" />

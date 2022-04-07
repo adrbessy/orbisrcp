@@ -18,11 +18,9 @@
  */
 package org.orbisgis.ui.editors.groovy;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.net.URLClassLoader;
-import java.time.format.DateTimeFormatter;
-
+import groovy.lang.Binding;
+import groovy.lang.GroovyShell;
+import groovy.transform.ThreadInterrupt;
 import org.codehaus.groovy.control.CompilerConfiguration;
 import org.codehaus.groovy.control.customizers.ASTTransformationCustomizer;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -33,9 +31,9 @@ import org.orbisgis.core.logger.Logger;
 import org.orbisgis.ui.editors.groovy.GroovyOutputConsole.GroovyConsoleContent;
 import org.orbisgis.ui.editors.groovy.logger.GroovyLogger;
 
-import groovy.lang.Binding;
-import groovy.lang.GroovyShell;
-import groovy.transform.ThreadInterrupt;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.net.URLClassLoader;
 
 public class GroovyJob extends Job {
 
@@ -146,9 +144,5 @@ public class GroovyJob extends Job {
             return status;
         }
     }
-    
-    public void setShell(GroovyShell shell) {
-		this.shell = shell;
-	}
 
 }

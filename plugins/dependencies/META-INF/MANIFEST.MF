@@ -185,6 +185,14 @@ Export-Package:
  org.eclipse.lsp4j,
  org.eclipse.lsp4j.jsonrpc.messages,
  org.eclipse.lsp4j.services,
+ org.geotools.data,
+ org.geotools.data.simple,
+ org.geotools.factory,
+ org.geotools.filter.text.cql2,
+ org.geotools.map,
+ org.geotools.styling,
+ org.geotools.swing,
+ org.geotools.swing.data,
  org.locationtech.jts,
  org.locationtech.jts.algorithm,
  org.locationtech.jts.algorithm.distance,
@@ -238,7 +246,8 @@ Export-Package:
  org.locationtech.jts.simplify,
  org.locationtech.jts.triangulate,
  org.locationtech.jts.triangulate.quadedge,
- org.locationtech.jts.util
+ org.locationtech.jts.util,
+ org.opengis.filter
 Bundle-ClassPath: 
  libs/commons-1.2.0-SNAPSHOT.jar,
  libs/ivy-2.5.0.jar,
@@ -247,5 +256,22 @@ Bundle-ClassPath:
  libs/groovy-sql-3.0.9.jar,
  libs/groovy-templates-3.0.9.jar,
  libs/groovy-language-server.jar,
- libs/org.eclipse.lsp4j-0.12.0.jar
+ libs/org.eclipse.lsp4j-0.12.0.jar,
+ libs/gt-main-27-SNAPSHOT.jar,
+ libs/gt-render-27-SNAPSHOT.jar,
+ libs/gt-coverage-27-SNAPSHOT.jar,
+ libs/gt-cql-27-SNAPSHOT.jar,
+ libs/gt-epsg-hsql-27-SNAPSHOT.jar,
+ libs/gt-geotiff-27-SNAPSHOT.jar,
+ libs/gt-http-27-SNAPSHOT.jar,
+ libs/gt-image-27-SNAPSHOT.jar,
+ libs/gt-jdbc-27-SNAPSHOT.jar,
+ libs/gt-jdbc-postgis-27-SNAPSHOT.jar,
+ libs/gt-metadata-27-SNAPSHOT.jar,
+ libs/gt-opengis-27-SNAPSHOT.jar,
+ libs/gt-referencing-27-SNAPSHOT.jar,
+ libs/gt-shapefile-27-SNAPSHOT.jar,
+ libs/gt-swing-27-SNAPSHOT.jar,
+ libs/gt-wms-27-SNAPSHOT.jar,
+ libs/gt-xml-27-SNAPSHOT.jar
 

@@ -59,7 +59,10 @@ public class GroovyEditor extends AbstractDecoratedTextEditor implements ISaveab
     }
 
     /**
-     * Catch the last pressed key, if it is an opening symbol like ([{"', the corresponding closing symbol is written automatically after the cursor.
+     * Catch the last pressed key, if it is an opening symbol like ([{"', the corresponding closing symbol is written
+     * automatically after the cursor.
+     * If the deleted key is pressed : if the deleted character is an opening symbol like ([{"' and if the following
+     * character is its corresponding closing symbol, so this corresponding closing symbol is also deleted.
      * @param parent the composite
      * @param ruler the iVerticalRuler
      * @param styles the styles
@@ -72,6 +75,7 @@ public class GroovyEditor extends AbstractDecoratedTextEditor implements ISaveab
             ((ITextViewerExtension) viewer).appendVerifyKeyListener(verifyEvent -> {
                 String lastCharacter = String.valueOf(verifyEvent.character);
                 StyledText styledText = (StyledText) verifyEvent.getSource();
+                int caretOffset = styledText.getCaretOffset();
                 switch (lastCharacter) {
                     case "(":
                         styledText.insert(")");
@@ -88,6 +92,24 @@ public class GroovyEditor extends AbstractDecoratedTextEditor implements ISaveab
                     case "'":
                         styledText.insert("'");
                         break;
+                }
+
+                // if the delete key is pressed
+                if (verifyEvent.keyCode == 8) {
+                    String source = ((StyledText) verifyEvent.getSource()).getText();
+                    // if there is a character after the cursor and if the delete key is not pressed at the first
+                    // possible position of the caret
+                    if(caretOffset < source.length() && caretOffset != 0) {
+                        String deletedCharacter = String.valueOf(source.charAt(caretOffset - 1));
+                        String followingCharacter = String.valueOf(source.charAt(caretOffset));
+                        if (deletedCharacter.equals("(") && followingCharacter.equals(")")
+                            || deletedCharacter.equals("[") && followingCharacter.equals("]")
+                            || deletedCharacter.equals("{") && followingCharacter.equals("}")
+                            || deletedCharacter.equals("\"") && followingCharacter.equals("\"")
+                            || deletedCharacter.equals("'") && followingCharacter.equals("'")) {
+                                styledText.replaceTextRange(caretOffset,1,"");
+                        }
+                    }
                 }
             });
         }
@@ -108,7 +130,6 @@ public class GroovyEditor extends AbstractDecoratedTextEditor implements ISaveab
         gl.marginHeight = 0;
         gl.marginWidth = 0;
         groovyEditor.setLayout(gl);
-
         createControlsBar(groovyEditor);
 
         GroovyEditorControl editorControl = new GroovyEditorControl(groovyEditor, this);

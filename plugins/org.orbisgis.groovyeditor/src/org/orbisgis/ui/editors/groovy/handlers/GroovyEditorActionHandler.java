@@ -18,9 +18,6 @@
  */
 package org.orbisgis.ui.editors.groovy.handlers;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.swt.widgets.TreeItem;
@@ -38,6 +35,9 @@ import org.orbisgis.ui.editors.groovy.GroovyEditor;
 import org.orbisgis.ui.editors.groovy.GroovyEditorCommands;
 import org.orbisgis.ui.editors.groovy.GroovyOutputConsole.GroovyConsoleContent;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GroovyEditorActionHandler extends AbstractHandler {
 
     private static final Logger LOGGER = new Logger(GroovyEditorActionHandler.class);
@@ -49,6 +49,7 @@ public class GroovyEditorActionHandler extends AbstractHandler {
             LOGGER.error("No active Groovy editor found");
             return null;
         }
+        System.out.println("editor : " + editor);
         String actionId = executionEvent.getCommand().getId();
         switch (actionId) {
             case GroovyEditorCommands.CMD_CLEAR:
